@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const userRoute = require("./routers/userRoutes");
 const app = express();
 app.use(express.json());
 
@@ -12,7 +13,6 @@ mongoose
   .catch(() => console.log("error in db"));
 
 app.use(cors());
-const todoRoute = require("./routers/todoRoutes");
-app.use("/", todoRoute);
+app.use("/", userRoute);
 
 app.listen(5000, () => console.log("listening on 5000"));

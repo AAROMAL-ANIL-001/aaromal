@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import Header from "../components/Header";
 import backGround from "../assets/logs.jpg";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +22,8 @@ const SignUp = () => {
 
     try {
       // Send the form data to the backend using Axios
-      const response = await axios.post("/api/todo", formData);
+      const response = await axios.post("/api/signup", formData);
+      navigate("/signin");
       console.log(response.data);
     } catch (error) {
       console.error(error);

@@ -21,7 +21,7 @@ const SignIn = () => {
 
     try {
       console.log(formData);
-      const response = await axios.post("/api/login", formData);
+      const response = await axios.post("/api/signin", formData);
       toast.success("Login successfull");
       console.log(response.data);
       if (response.status === 200) {
